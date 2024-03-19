@@ -1,4 +1,6 @@
-import command from "../config.json" assert { type: "json" };
+import command from "../config.json";
+
+// Imports for commands
 import { HELP } from "./commands/help";
 import { BANNER } from "./commands/banner";
 import { ABOUT } from "./commands/abouts";
@@ -8,39 +10,52 @@ import { createWhoami } from "./commands/whoami";
 import { createPhil } from "./commands/phil";
 import { createWhoAreYou } from "./commands/whoareyou";
 
-//mutWriteLines gets deleted and reassigned
+// Constants
+const COMMANDS = ["help", "about", "projects", "whoami", "banner", "clear"];
+const HISTORY: string[] = [];
+const WRITELINESCOPY = document.getElementById("write-lines");
+const TERMINAL = document.getElementById("terminal");
+const USERINPUT = document.getElementById("user-input") as HTMLInputElement;
+const PROMPT = document.getElementById("prompt");
+
+// Variables
 let mutWriteLines = document.getElementById("write-lines");
 let historyIdx = 0;
 let tempInput = "";
-let userInput: string;
 let isSudo = false;
-
 let bareMode = false;
 let img = new Image();
 
-//WRITELINESCOPY is used to during the "clear" command
-const WRITELINESCOPY = mutWriteLines;
-const TERMINAL = document.getElementById("terminal");
-const USERINPUT = document.getElementById("user-input") as HTMLInputElement;
-const PASSWORD_INPUT = document.getElementById(
-  "password-field"
-) as HTMLInputElement;
-const PRE_HOST = document.getElementById("pre-host");
-const PRE_USER = document.getElementById("pre-user");
-const HOST = document.getElementById("host");
-const USER = document.getElementById("user");
-const PROMPT = document.getElementById("prompt");
-const COMMANDS = ["help", "about", "projects", "whoami", "banner", "clear"];
-const HISTORY: string[] = [];
-
+// Utility functions
 const scrollToBottom = () => {
   const MAIN = document.getElementById("main");
-  if (!MAIN) return;
-
-  MAIN.scrollTop = MAIN.scrollHeight;
+  if (MAIN) {
+    MAIN.scrollTop = MAIN.scrollHeight;
+  }
 };
 
-function userInputHandler(e: KeyboardEvent) {
+const displayText = (item: string, idx: number) => {
+  setTimeout(() => {
+    if (!mutWriteLines) return;
+    const p = document.createElement("p");
+    p.innerHTML = item;
+    mutWriteLines.parentNode!.insertBefore(p, mutWriteLines);
+    scrollToBottom();
+  }, 40 * idx);
+};
+
+const displayImage = (item: string) => {
+  img.src = item;
+  img.height = 300;
+
+  document.getElementById("body")!.appendChild(img);
+  setTimeout(() => {
+    document.getElementById("body")?.removeChild(img);
+  }, 10000);
+};
+
+// Event handlers
+const userInputHandler = (e: KeyboardEvent) => {
   const key = e.key;
 
   switch (key) {
@@ -64,13 +79,13 @@ function userInputHandler(e: KeyboardEvent) {
       e.preventDefault();
       break;
   }
-}
+};
 
-function enterKey() {
+const enterKey = () => {
   if (!mutWriteLines || !PROMPT) return;
   const resetInput = "";
   let newUserInput;
-  userInput = USERINPUT.value;
+  const userInput = USERINPUT.value;
 
   if (bareMode) {
     newUserInput = userInput;
@@ -81,11 +96,9 @@ function enterKey() {
   HISTORY.push(userInput);
   historyIdx = HISTORY.length;
 
-  //if clear then early return
   if (userInput === "clear") {
     commandHandler(userInput.toLowerCase().trim());
     USERINPUT.value = resetInput;
-    userInput = resetInput;
     return;
   }
 
@@ -96,20 +109,15 @@ function enterKey() {
     mutWriteLines.parentNode.insertBefore(div, mutWriteLines);
   }
 
-  /*
-  if input is empty or a collection of spaces, 
-  just insert a prompt before #write-lines
-  */
   if (userInput.trim().length !== 0) {
     commandHandler(userInput.toLowerCase().trim());
   }
 
   USERINPUT.value = resetInput;
-  userInput = resetInput;
-}
+};
 
-function tabKey() {
-  let currInput = USERINPUT.value;
+const tabKey = () => {
+  const currInput = USERINPUT.value;
 
   for (const ele of COMMANDS) {
     if (ele.startsWith(currInput)) {
@@ -117,9 +125,9 @@ function tabKey() {
       return;
     }
   }
-}
+};
 
-function arrowKeys(e: string) {
+const arrowKeys = (e: string) => {
   switch (e) {
     case "ArrowDown":
       if (historyIdx !== HISTORY.length) {
@@ -136,9 +144,9 @@ function arrowKeys(e: string) {
       }
       break;
   }
-}
+};
 
-function commandHandler(input: string) {
+const commandHandler = (input: string) => {
   if (input.startsWith("rm -rf") && input.trim() !== "rm -rf") {
     if (isSudo) {
       if (input === "rm -rf src" && !bareMode) {
@@ -271,48 +279,34 @@ function commandHandler(input: string) {
       writeLines(DEFAULT);
       break;
   }
-}
+};
 
-function writeLines(message: string[]) {
+const writeLines = (message: string[]) => {
   message.forEach((item, idx) => {
     displayText(item, idx);
   });
-}
-
-function displayText(item: string, idx: number) {
-  setTimeout(() => {
-    if (!mutWriteLines) return;
-    const p = document.createElement("p");
-    p.innerHTML = item;
-    mutWriteLines.parentNode!.insertBefore(p, mutWriteLines);
-    scrollToBottom();
-  }, 40 * idx);
-}
-function displayImage(item: string) {
-  img.src = item;
-  img.height = 300;
-
-  document.getElementById("body")!.appendChild(img);
-  setTimeout(() => {
-    document.getElementById("body")?.removeChild(img);
-  }, 10000);
-}
+};
 
 const initEventListeners = () => {
-  if (HOST) {
-    HOST.innerText = command.hostname;
-  }
-
-  if (USER) {
-    USER.innerText = command.username;
-  }
-
-  if (PRE_HOST) {
-    PRE_HOST.innerText = command.hostname;
-  }
-
-  if (PRE_USER) {
-    PRE_USER.innerText = command.username;
+  if (command) {
+    if (command.hostname) {
+      const HOST = document.getElementById("host");
+      const PRE_HOST = document.getElementById("pre-host");
+      if (HOST) HOST.innerText = command.hostname;
+      if (PRE_HOST) PRE_HOST.innerText = command.hostname;
+    }
+    if (command.username) {
+      const USER = document.getElementById("user");
+      const PRE_USER = document.getElementById("pre-user");
+      if (USER) USER.innerText = command.username;
+      if (PRE_USER) PRE_USER.innerText = command.username;
+    }
+    if (command.password) {
+      console.log(
+        `%cPassword: ${command.password}`,
+        "color: red; font-size: 20px;"
+      );
+    }
   }
 
   window.addEventListener("load", () => {
@@ -321,16 +315,6 @@ const initEventListeners = () => {
 
   USERINPUT.addEventListener("keypress", userInputHandler);
   USERINPUT.addEventListener("keydown", userInputHandler);
-  PASSWORD_INPUT.addEventListener("keypress", userInputHandler);
-
-  window.addEventListener("click", () => {
-    USERINPUT.focus();
-  });
-
-  console.log(
-    `%cPassword: ${command.password}`,
-    "color: red; font-size: 20px;"
-  );
 };
 
 initEventListeners();
