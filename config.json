@@ -1,30 +1,13 @@
 {
-  "ascii": [
-    "██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗",
-    "██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝",
-    "██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗",
-    "██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝",
-    "╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗",
-    " ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝"
-  ],
-  "title": "Portfolio",
-  "username": "unknown",
-  "hostname": "100xA",
-  "password": "050823",
-  "repoLink": "",
-  "original": "https://100xa.github.io/",
-  "social": {
-    "email": "biernackijan4@gmail.com",
-    "github": "100xA",
-    "linkedin": "www.linkedin.com/in/jan-biernacki-934221200/"
-  },
-
-  "projects": [
-    [
-      "Pomodoro Tracker",
-      "CLI AppleScript Pomodoro Tracker",
-      "https://100xa.github.io/2023/03/22/project-pomodoro-tracker/"
+    "ascii": [
+       "██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗",
+       "██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝",
+       "██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗",
+       "██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝",
+       "╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗",
+       " ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝"
     ],
+<<<<<<< HEAD
     [
       "Integrationsseminar",
       "College Project - Seminar Digitale Assistenzsysteme für den technischen Service",
@@ -58,6 +41,48 @@
     },
     "commands": {
       "textColor": "#c4a7e7"
+=======
+    "title": "Portfolio",
+    "username": "unknown",
+    "hostname": "100xA",
+    "password": "050823",
+    "repoLink": "",
+    "original": "https://100xa.github.io/",
+    "social": {
+      "email": "biernackijan4@gmail.com",
+      "github": "100xA",
+      "linkedin": "www.linkedin.com/in/jan-biernacki-934221200/"
+    },
+    
+    "projects": [
+      [
+        "GofeR",
+        "Vue.js reactivity in Go.",
+        "https://github.com/nasan016/gofer"
+      ]
+    ],
+    "colors": {
+      "background": "#232136",
+      "foreground": "#e0def4",
+      "banner": "#FF9951",
+      "border": {
+        "visible": false ,
+        "color": "#FFADE2"
+      },
+      "prompt": {
+        "default": "#A5A7A7",
+        "user": "#FE6BC9",
+        "host": "#f6c177",
+        "input": "#FF7685"
+      },
+      "link": {
+        "text": "#B6AAEE",
+        "highlightColor": "#FFADE2",
+        "highlightText": "#0C0623"
+      },
+      "commands": {
+        "textColor": "#c4a7e7"
+      }
+>>>>>>> parent of 3ec7b68 (Change config.json)
     }
   }
-}
