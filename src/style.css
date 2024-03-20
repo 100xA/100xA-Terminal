@@ -214,3 +214,23 @@ input[type="text"], textarea {
     margin-left: 8px;
   }
 }
+
+#docs-button {
+  position: fixed;
+  margin-top: 10px;
+  margin-right: 10px;
+  top: 20px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  padding: 10px 20px;
+  background-color: var(--bg); /* Blue color, you can change it */
+  color: #fff; /* White color */
+  border: 2px solid var(--border);  
+  cursor: pointer;
+  font-family: "ascii", monospace;
+
+  z-index: 9999; /* Ensure it's on top of other elements */
+}
+
+#docs-button:hover {
+  background-color: var(--prompt-1); /* Darker shade of blue on hover */
+}
