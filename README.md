@@ -1,6 +1,7 @@
 # My Terminal Portfolio
 
-Built upon on: https://github.com/nasan016/webshell?tab=readme-ov-file
+Built upon on: https://github.com/nasan016/webshell
+Theme inspired by: https://rosepinetheme.com/
 
 ![Screenshot](screenshot.png)
 
