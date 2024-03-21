@@ -1,3 +1,23 @@
+# My Terminal Portfolio
+
+Built upon on: https://github.com/nasan016/webshell?tab=readme-ov-file
+
+![Screenshot](screenshot.png)
+
+Check out the current running website on:
+https://100xa.netlify.app/
+
+### Features
+
+- **[Tab]** for auto completion
+- **[Esc]** to clear the input line
+- **[↑][↓]** to scroll through your command history
+
+### Configuration
+
+Configuration for welcome message/colors/socials is done in the `config.json` file:
+
+```json
 {
   "ascii": [
     "██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗",
@@ -8,7 +28,6 @@
     " ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝"
   ],
   "title": "Portfolio",
-  "username": "unknown",
   "original": "https://100xa.github.io/",
   "social": {
     "email": "biernackijan4@gmail.com",
@@ -39,3 +58,32 @@
     }
   }
 }
+```
+
+Other configurations are made in the objects of each command files.
+
+### Running the project
+
+1. Clone the repository
+
+```
+git clone https://github.com/100xA/100xA-Terminal.git
+```
+
+2. Go to the project directory
+
+```
+cd webshell
+```
+
+3. Install the dependencies
+
+```
+npm install
+```
+
+4. Start the server
+
+```
+npm run dev
+```

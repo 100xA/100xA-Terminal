@@ -289,23 +289,11 @@ const writeLines = (message: string[]) => {
 
 const initEventListeners = () => {
   if (command) {
-    if (command.hostname) {
-      const HOST = document.getElementById("host");
-      const PRE_HOST = document.getElementById("pre-host");
-      if (HOST) HOST.innerText = command.hostname;
-      if (PRE_HOST) PRE_HOST.innerText = command.hostname;
-    }
     if (command.username) {
       const USER = document.getElementById("user");
       const PRE_USER = document.getElementById("pre-user");
       if (USER) USER.innerText = command.username;
       if (PRE_USER) PRE_USER.innerText = command.username;
-    }
-    if (command.password) {
-      console.log(
-        `%cPassword: ${command.password}`,
-        "color: red; font-size: 20px;"
-      );
     }
   }
 
