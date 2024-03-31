@@ -226,6 +226,12 @@ const commandHandler = (input: string) => {
       }
       writeLines(["Spacko XD"]);
       break;
+    case "paddy":
+      if (document.body.contains(img)) {
+        document.getElementById("body")?.removeChild(img);
+      }
+      writeLines(["Hurensohn"]);
+      break;
     case "angi":
       if (document.body.contains(img)) {
         document.getElementById("body")?.removeChild(img);
