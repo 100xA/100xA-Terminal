@@ -74,7 +74,7 @@ git clone https://github.com/100xA/100xA-Terminal.git
 2. Go to the project directory
 
 ```
-cd webshell
+cd 100xa-terminal
 ```
 
 3. Install the dependencies
