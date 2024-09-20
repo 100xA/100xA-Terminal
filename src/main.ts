@@ -9,6 +9,7 @@ import { PROJECTS } from "./commands/projects";
 import { createWhoami } from "./commands/whoami";
 import { createPhil } from "./commands/phil";
 import { createWhoAreYou } from "./commands/whoareyou";
+import { BLOG } from "./commands/blog";
 
 // Constants
 const COMMANDS = ["help", "about", "projects", "whoami", "banner", "clear"];
@@ -244,12 +245,18 @@ const commandHandler = (input: string) => {
       }
       writeLines(PROJECTS);
       break;
+    case "blog":
+      if (document.body.contains(img)) {
+        document.getElementById("body")?.removeChild(img);
+      }
+      writeLines(BLOG);
+      break;
     case "rejtan":
       if (document.body.contains(img)) {
         document.getElementById("body")?.removeChild(img);
       }
       displayImage(
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Jan_Matejko_-_Upadek_Polski_%28Reytan%29.jpg/800px-Jan_Matejko_-_Upadek_Polski_%28Reytan%29.jpg"
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Jan_Matejko_-_Upadek_Polski_%28Reytan%29.jpg/800px-Jan_Matejko_-_Upadek_Polski_%28Reytan%29.jpg",
       );
       break;
 

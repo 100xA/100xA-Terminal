@@ -9,6 +9,11 @@ projectMap.set("Pomodoro Tracker", [
   "CLI AppleScript Pomodoro Tracker",
 ]);
 
+projectMap.set("DLBDSC01", [
+  "https://100xa.github.io/2024/09/19/world-data-bank-statistical-computing-with-r/",
+  "Statistical Computing with R with World Open Data Bank",
+]);
+
 const createProject = (): string[] => {
   const projects: string[] = [];
   const SPACE = " ";
@@ -20,7 +25,7 @@ const createProject = (): string[] => {
     const linkElement = `<a href="${link}" target="_blank">${projectName}</a>`;
     const padding = SPACE.repeat(30 - projectName.length);
     const projectString = `${SPACE.repeat(
-      2
+      2,
     )}${linkElement} -${padding}${description}`;
     projects.push(projectString);
 

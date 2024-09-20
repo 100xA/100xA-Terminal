@@ -4,7 +4,7 @@ const helpObj = {
     ["'projects'", "Maybe there's something interesting."],
     ["'whoami'", "A perplexing question."],
     ["'whoareyou'", "My Resume."],
-
+    ["'blog'", "My Blogs"],
     ["'banner'", "Display the banner."],
     ["'phil'", "A splash of Philosophy"],
     ["'clear'", "Clear the terminal."],
@@ -31,7 +31,7 @@ const createHelp = (): string[] => {
   help.push("Press <span class='keys'>[Tab]</span> for auto completion.");
   help.push("Press <span class='keys'>[Esc]</span> to clear the input line.");
   help.push(
-    "Press <span class='keys'>[↑][↓]</span> to scroll through your history of commands."
+    "Press <span class='keys'>[↑][↓]</span> to scroll through your history of commands.",
   );
   help.push("<br>");
   return help;
